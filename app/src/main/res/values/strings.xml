@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JumpSensor</string>
+    <string name="nbrJumps">0</string>
+    <string name="resetButton">reset</string>
+</resources>
