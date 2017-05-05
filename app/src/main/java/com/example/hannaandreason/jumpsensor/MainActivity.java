@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private TextView nbrJump;
-    private int currentNbrJumps = 0;
+    private int currentNbrJumps = 10;
     private boolean currentPosUp = false;
     private Sensor mAccelerator;
     private SensorManager mSensorManager;
@@ -46,8 +46,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             if (detectUp(accelerationValues)) {
                 currentPosUp = true;
-                currentNbrJumps++;
-                nbrJump.setText(Integer.toString(currentNbrJumps));
+                if(currentNbrJumps>1) {
+                    currentNbrJumps--;
+                    nbrJump.setText(Integer.toString(currentNbrJumps));
+                }else{
+                    nbrJump.setText("Done!");
+                }
             }
         }
     }
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void reset(View view) {
-        currentNbrJumps=0;
+        currentNbrJumps=10;
         nbrJump.setText(Integer.toString(currentNbrJumps));
     }
 
